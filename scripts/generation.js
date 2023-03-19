@@ -74,6 +74,8 @@ function stringifyScores(scores, levelset, ruleset) {
     " " +
     ruleset +
     ")\n" +
-    scoreStrings.join("\n")
+    scoreStrings.join("\n") +
+    "\n\n" +
+    "Automatically generated at https://drewroen.github.io/cc-score-report-generator/"
   );
 }
