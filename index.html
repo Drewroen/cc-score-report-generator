@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Chips Challenge Score Reporter</h1>
+    <p>
+      This is a tool that allows you to upload your save file, and automatically
+      generate a score report.
+    </p>
+    <p>
+      It currently only works for TWS files, but I'll eventually try to get it
+      working for C2M files as well :)
+    </p>
+    <label for="save-file-input">Upload TWS:</label>
+    <input type="file" id="save-file-input" accept=".c2h,.tws" />
+    <br />
+    <label for="player-id">Player ID:</label>
+    <input id="player-id" type="number" />
+    <br />
+    <label for="levelset">Levelset:</label>
+    <select id="levelset">
+      <option value="cc1">CC1</option>
+      <option value="cclp1">CCLP1</option>
+      <option value="cclp2">CCLP2</option>
+      <option value="cclp3">CCLP3</option>
+      <option value="cclp4">CCLP4</option>
+    </select>
+    <br />
+    <button type="button" id="generate-report-button">Generate Report</button>
+    <br />
+    <textarea id="score-report" rows="50" cols="50" disabled></textarea>
+  </body>
+</html>
+
+<script src="scripts/chips_api.js"></script>
+<script src="scripts/tws.js"></script>
+<script src="scripts/generation.js"></script>
+<script src="scripts/listener.js"></script>
