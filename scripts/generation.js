@@ -39,16 +39,18 @@ function getFormattedScores(rawScores, packData, playerScores) {
   rawScores.scores.forEach((score) => {
     elapsedTime = score.time;
     var level = simplifiedPack.filter((level) => level.level == score.level)[0];
-    var oldScore = playerScores.levels[score.level] ? playerScores.levels[score.level].filter(
-      (score) => score.rule_type == rawScores.ruleset
-    )[0].reported_value : 0;
+    var oldScore = playerScores.levels[score.level]
+      ? playerScores.levels[score.level].filter(
+          (score) => score.rule_type == rawScores.ruleset
+        )[0].reported_value
+      : 0;
 
     actualTime = level.timeLimit - elapsedTime;
     completeData.push({
       level: score.level,
       newScore: Math.max(0, actualTime),
       oldScore: oldScore,
-      bold: level.bold
+      bold: level.bold,
     });
   });
 
@@ -65,17 +67,14 @@ function getImprovedScores(formattedScores) {
 }
 
 function stringifyScores(scores, levelset, ruleset) {
-  var scoreStrings = scores.map(
-    (score) => {
-      console.log(score);
-      var str = "Level " + score.level + " - " + score.newScore;
-      if (score.bold < score.newScore)
-        str += " (b+" + (score.newScore - score.bold) + ")";
-      else if (score.bold == score.newScore)
-        str += " (b)";
-      return str;
-    }
-  );
+  var scoreStrings = scores.map((score) => {
+    console.log(score);
+    var str = "Level " + score.level + " - " + score.newScore;
+    if (score.bold < score.newScore)
+      str += " (b+" + (score.newScore - score.bold) + ")";
+    else if (score.bold == score.newScore) str += " (b)";
+    return str;
+  });
   return (
     "Score Report (" +
     levelset +
